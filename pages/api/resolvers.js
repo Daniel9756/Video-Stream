@@ -48,10 +48,13 @@ export const resolvers = {
   },
 
   Mutation: {
+
+
     async createSessionAndToken(parent, arg) {
       const session = await createSessionPromisified();
       if (session) {
         const token = await opentok.generateToken(session.sessionId);
+        // console.log(token, "this ids token")
         return {
           id: session.sessionId,
           token,

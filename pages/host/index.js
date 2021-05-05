@@ -100,7 +100,7 @@ function Host() {
         </a>
       )}
       {error ? <div>{error}</div> : null}
-      <Connection connect={connect} />
+      <Connection connect={connect} sessionId={id}/>
       <OTSession
         apiKey={apiKey}
         sessionId={id}
@@ -108,7 +108,7 @@ function Host() {
         onConnect={handleSessionOn}
         onError={onError}
       >
-        <Publisher />
+       <Publisher />
         <OTStreams>
           <Subscriber />
         </OTStreams>
@@ -119,9 +119,8 @@ function Host() {
         ) : (
           <button onClick={handleRecordOn}>Record</button>
         )}
-      </div>
-    </div>
-  );
+        </div>
+      </div>  );
 }
 
 export default preloadScript(Host);
